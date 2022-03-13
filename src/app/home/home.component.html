@@ -1,0 +1,102 @@
+<!--==============================Loading=================================-->
+<div class="lodaing vh-100 position-relative">
+  <div class="owl-container container"> 
+     <div><p>OUR LATEST MOVIES</p></div>
+     <owl-carousel-o [options]="customOptions">
+       <ng-template carouselSlide *ngFor="let latest of latestMovies">
+           <img [src]="'https://image.tmdb.org/t/p/w500'+ latest.poster_path" class="w-100 cursor" [routerLink]="['/singlemovie' , latest.id]">
+       </ng-template>  
+     </owl-carousel-o>
+  </div> 
+</div>
+<!--============================Trending Movies===============================-->
+<div class="container py-5">
+    <div class="row justify-content-center pt-5">
+        <div class="col-md-4">
+            <div class="py-3">
+                <div class="topLine"></div>
+                <h1 class="fs-3">Trending<br>Movies<br>to Watch Now</h1>
+                <p class="second_color">Most Trending movies to watch</p>
+                <div class="bottomLine"></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-2" *ngFor="let movie of popularMoviesData">
+            <div class="position-relative">
+                <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w500'+ movie.poster_path" class="w-100 cursor" [routerLink]="['/singlemovie' , movie.id]">
+                <img *ngIf="!movie.poster_path" src="../../assets/img/image not found.png" class="w-100 cursor" [routerLink]="['/singlemovie' , movie.id]">
+                <p class="title pt-1">{{movie.title}}</p>
+                <span class="vote">{{movie.vote_average}}</span>
+            </div>
+        </div>
+    </div>
+    <!--============Pagination============-->
+    <nav aria-label="Page navigation example" class="pt-3">
+        <ul class="pagination justify-content-center">
+          <li class="page-item"><a class="page-link cursor" (click)="TMPreviousPage()">Previous</a></li>
+          <li class="page-item"><a class="page-link">{{TMCurrentPage}}</a></li>
+          <li class="page-item"><a class="page-link">from</a></li>
+          <li class="page-item"><a class="page-link">{{TMTotalPage}}</a></li>
+          <li class="page-item"><a class="page-link cursor" (click)="TMNextPage()">Next</a></li>
+        </ul>
+    </nav>
+    <!--============================Trending Tv Show===============================-->
+    <div class="row justify-content-center pt-4">
+        <div class="col-md-4">
+            <div class="py-3">
+                <div class="topLine"></div>
+                <h1 class="fs-3">Trending<br>Tv Show<br>to Watch Now</h1>
+                <p class="second_color">Most watched Trending Tv Show by days</p>
+                <div class="bottomLine"></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-2" *ngFor="let Tv of tvPopular">
+            <div class="position-relative">
+                <img *ngIf="Tv.poster_path" [src]="'https://image.tmdb.org/t/p/w500'+ Tv.poster_path" class="w-100 cursor" [routerLink]="['/singletvshow' , Tv.id]">
+                <img *ngIf="!Tv.poster_path" src="../../assets/img/image not found.png" class="w-100 cursor" [routerLink]="['/singletvshow' , Tv.id]">
+                <p class="title pt-1">{{Tv.name}}</p>
+                <span class="vote">{{Tv.vote_average}}</span>
+            </div>
+        </div>
+    </div>
+    <!--============Pagination============-->
+    <nav aria-label="Page navigation example" class="pt-3">
+        <ul class="pagination justify-content-center">
+          <li class="page-item"><a class="page-link cursor" (click)="TTVPreviousPage()">Previous</a></li>
+          <li class="page-item"><a class="page-link">{{TTVCurrentPage}}</a></li>
+          <li class="page-item"><a class="page-link">from</a></li>
+          <li class="page-item"><a class="page-link">{{TTVTotalPage}}</a></li>
+          <li class="page-item"><a class="page-link cursor" (click)="TTVNextPage()">Next</a></li>
+        </ul>
+    </nav>
+    <!--============================Trending People===============================-->
+    <div class="row justify-content-center pt-4">
+        <div class="col-md-4">
+            <div class="py-3">
+                <div class="topLine"></div>
+                <h1 class="fs-3">Trending<br>People</h1>
+                <p class="second_color">Show the trending people in the results.</p>
+                <div class="bottomLine"></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-2" *ngFor="let people of trendingPeople">
+            <div class="position-relative">
+                <img *ngIf="people.profile_path" [src]="'https://image.tmdb.org/t/p/w500'+ people.profile_path" class="w-100 cursor" [routerLink]="['/singlepeople' , people.id]">
+                <img *ngIf="!people.profile_path" src="../../assets/img/unknow.jpg" class="w-100 cursor">
+                <p class="title pt-1">{{people.name}}</p>
+            </div>
+        </div>
+    </div>
+    <!--============Pagination============-->
+    <nav aria-label="Page navigation example" class="pt-3">
+        <ul class="pagination justify-content-center">
+          <li class="page-item"><a class="page-link cursor" (click)="TPPreviousPage()">Previous</a></li>
+          <li class="page-item"><a class="page-link">{{TPCurrentPage}}</a></li>
+          <li class="page-item"><a class="page-link">from</a></li>
+          <li class="page-item"><a class="page-link">{{TPTotalPage}}</a></li>
+          <li class="page-item"><a class="page-link cursor" (click)="TPNextPage()">Next</a></li>
+        </ul>
+    </nav>
+</div>
+
+
+

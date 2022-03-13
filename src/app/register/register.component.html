@@ -1,0 +1,43 @@
+<div class="vh-100 d-flex justify-content-center align-items-center">
+<div class="container">
+    <form [formGroup]="registerData" (ngSubmit)="registerValue()" class="w-75 mx-auto pt-4">
+        <label for="FnameInput" class="pt-5 mt-5">First Name</label>
+        <input type="text" formControlName = 'first_name' class="form-control" id="FnameInput">
+        <div *ngIf="registerData.controls['first_name'].invalid && registerData.controls['first_name'].touched" class="text-danger d-flex pt-2">
+           <p *ngIf="registerData.controls['first_name'].errors?.['required']" class="pe-3 m-0">Please enter your first name.</p>
+           <p *ngIf="registerData.controls['first_name'].errors?.['pattern']" class="pe-3 m-0">Please start with capital letter.</p>
+           <p *ngIf="registerData.controls['first_name'].errors?.['minlength']" class="pe-3 m-0">Please at least insert {{registerData.controls['first_name'].errors?.['minlength'].requiredLength}} characters.</p>
+           <p *ngIf="registerData.controls['first_name'].errors?.['maxlength']" class="pe-3 m-0">Max characters to enter {{registerData.controls['first_name'].errors?.['maxlength'].requiredLength}} character.</p>
+        </div>
+        <label for="LnameInput" class="pt-4">Last Name</label>
+        <input type="text" formControlName = 'last_name' class="form-control" id="LnameInput">
+        <div *ngIf="registerData.controls['last_name'].invalid && registerData.controls['last_name'].touched" class="text-danger d-flex pt-2">
+            <p *ngIf="registerData.controls['last_name'].errors?.['required']" class="pe-3 m-0">Please enter your first name.</p>
+            <p *ngIf="registerData.controls['last_name'].errors?.['pattern']" class="pe-3 m-0">Please start with capital letter.</p>
+            <p *ngIf="registerData.controls['last_name'].errors?.['minlength']" class="pe-3 m-0">Please at least insert {{registerData.controls['last_name'].errors?.['minlength'].requiredLength}} characters.</p>
+            <p *ngIf="registerData.controls['last_name'].errors?.['maxlength']" class="pe-3 m-0">Max characters to enter {{registerData.controls['last_name'].errors?.['maxlength'].requiredLength}} character.</p>
+         </div>
+        <label for="ageInput" class="pt-4">Age</label>
+        <input type="number" formControlName = 'age' class="form-control" id="ageInput">
+        <div *ngIf="registerData.controls['age'].invalid && registerData.controls['age'].touched" class="text-danger d-flex pt-2">
+            <p *ngIf="registerData.controls['age'].errors?.['required']" class="pe-3 m-0">Please enter your age.</p>
+            <p *ngIf="registerData.controls['age'].errors?.['min']" class="pe-3 m-0">Min age must be {{registerData.controls['age'].errors?.['min'].min}} or above.</p>
+         </div>
+        <label for="emailInput" class="pt-4">Email</label>
+        <input type="email" formControlName = 'email' class="form-control" id="emailInput">
+        <div *ngIf="registerData.controls['email'].invalid && registerData.controls['email'].touched" class="text-danger d-flex pt-2">
+            <p *ngIf="registerData.controls['email'].errors?.['required']" class="pe-3 m-0">Please enter your email.</p>
+            <p *ngIf="registerData.controls['email'].errors?.['email']" class="pe-3 m-0">Enter valid email.</p>
+         </div>
+        <label for="passInput" class="pt-4">Password</label>
+        <input type="password" formControlName = 'password' class="form-control" id="passInput">
+        <div *ngIf="registerData.controls['password'].invalid && registerData.controls['password'].touched" class="text-danger d-flex pt-2">
+            <p *ngIf="registerData.controls['password'].errors?.['required']" class="pe-3 m-0">Please enter your password.</p>
+            <p *ngIf="registerData.controls['password'].errors?.['minlength']" class="pe-3 m-0">Please at least insert {{registerData.controls['password'].errors?.['minlength'].requiredLength}}.</p>
+            <p *ngIf="registerData.controls['password'].errors?.['pattern']" class="pe-3 m-0">Must contain at least 1 letter.</p>
+        </div>
+        <span class="d-block text-danger pt-2">{{message}}</span>
+<button [disabled] = 'registerData.invalid && registerData.touched' class="btn btn-info my-3">register</button>
+    </form>
+</div>
+</div>

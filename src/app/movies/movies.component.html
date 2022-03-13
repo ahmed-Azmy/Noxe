@@ -1,0 +1,97 @@
+<!--===============================Search===========================-->
+<div class="pt-5 mt-5">
+    <div class="container">
+        <div class="d-flex align-items-center g-0">
+            <div>
+                <div class="icon py-2 rounded-start text-center">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div>
+                <div class="inputContainer">
+                   <input type="search" [(ngModel)]="searchInput" (keyup)="searchValue()" class="w-100 py-2 form-control"> 
+                </div>
+            </div> 
+        </div>  
+    </div>
+</div>
+<!--===============================Main content===========================-->
+<div class="container py-5" *ngIf="!searchInput">
+    <!--=====Movies playing right now=====-->
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="py-3">
+                <div class="topLine"></div>
+                <h1 class="fs-3">Trending<br>Movies<br>to Watch Now</h1>
+                <p class="second_color">Most watched movies by days</p>
+                <div class="bottomLine"></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-2" *ngFor="let movie of moviesData">
+            <div class="position-relative cursor">
+                <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w500'+ movie.poster_path" class="w-100" [routerLink]="['/singlemovie' , movie.id]">
+                <img *ngIf="!movie.poster_path" src="../../assets/img/image not found.png" class="w-100" [routerLink]="['/singlemovie' , movie.id]">
+                <p class="title pt-1">{{movie.title}}</p>
+                <span class="vote">{{movie.vote_average}}</span>
+            </div>
+        </div>
+        <nav aria-label="Page navigation example" class="pt-3">
+            <ul class="pagination justify-content-center">
+              <li class="page-item"><a class="page-link cursor" (click)="getPreviousPage()">Previous</a></li>
+              <li class="page-item"><a class="page-link">{{currentPage}}</a></li>
+              <li class="page-item"><a class="page-link">from</a></li>
+              <li class="page-item"><a class="page-link">{{totalPage}}</a></li>
+              <li class="page-item"><a class="page-link cursor" (click)="getNextPage()">Next</a></li>
+            </ul>
+          </nav>
+    </div>
+    <!--============Popular Movie============-->
+    <div class="row justify-content-center pt-5">
+        <div class="col-md-4">
+            <div class="py-3">
+                <div class="topLine"></div>
+                <h1 class="fs-3">Popular<br>Movies<br>to Watch Now</h1>
+                <p class="second_color">Most Popular movies to watch</p>
+                <div class="bottomLine"></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-2" *ngFor="let movie of popularMoviesData">
+            <div class="position-relative cursor">
+                <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w500'+ movie.poster_path" class="w-100" [routerLink]="['/singlemovie' , movie.id]">
+                <img *ngIf="!movie.poster_path" src="../../assets/img/image not found.png" class="w-100" [routerLink]="['/singlemovie' , movie.id]">
+                <p class="title pt-1">{{movie.title}}</p>
+                <span class="vote">{{movie.vote_average}}</span>
+            </div>
+        </div>
+    </div>
+    <!--============Pagination============-->
+    <nav aria-label="Page navigation example" class="pt-3">
+        <ul class="pagination justify-content-center">
+          <li class="page-item"><a class="page-link cursor" (click)="PMPreviousPage()">Previous</a></li>
+          <li class="page-item"><a class="page-link">{{PMCurrentPage}}</a></li>
+          <li class="page-item"><a class="page-link">from</a></li>
+          <li class="page-item"><a class="page-link">{{PMTotalPage}}</a></li>
+          <li class="page-item"><a class="page-link cursor" (click)="PMNextPage()">Next</a></li>
+        </ul>
+    </nav>
+</div>
+<!--===================================Search Data===================================-->
+<div class="container py-5" *ngIf="searchInput">
+    <div *ngFor="let data of searchData" class="pb-4">
+        <div class="row align-items-center cursor" [routerLink]="['/singlemovie' , data.id]">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <div class="img">
+                    <img *ngIf="data.poster_path" [src]="'https://image.tmdb.org/t/p/w500'+ data.poster_path" class="w-100">
+                    <img *ngIf="!data.poster_path" src="../../assets/img/image not found.png" class="w-100">
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="info">
+                    <h2 class="py-2">{{data.title}}</h2>
+                    <p class="pb-2">Release Date : {{data.release_date}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

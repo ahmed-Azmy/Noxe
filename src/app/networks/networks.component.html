@@ -1,0 +1,17 @@
+<div class="container py-5 mt-4">
+    <div class="row gy-3">
+        <div class="col-12">
+            <div class="py-3 text-center">
+                <h1 class="fs-3">Networks<br>to Visit Now</h1>
+                <p class="second_color">Most Popular Networks in The World</p>
+                <div class="bottomLine"></div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3" *ngFor="let network of networks">
+            <div class="info shadow">
+                <a [href]="network.homepage" target="_blank"><img [src]="'https://image.tmdb.org/t/p/w500'+ network.logo_path" class="w-100"></a>
+                <a [href]="network.homepage" target="_blank" class="text-decoration-none"><p class="pt-1">{{network.name}}</p></a>
+            </div>
+        </div>
+    </div>
+</div>

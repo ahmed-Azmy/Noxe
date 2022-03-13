@@ -1,0 +1,23 @@
+<div class="vh d-flex justify-content-center align-items-center">
+<div class="container py-5 mt-4" *ngIf="recieved">
+    <div class="row">
+        <div class="col-md-4">
+            <img [src]="'https://image.tmdb.org/t/p/w500'+ singleMovieData.poster_path" class="w-100">
+        </div>
+        <div class="col-md-8">
+            <div class="info py-3">
+               <h3>{{singleMovieData.title}}</h3>
+               <p class="second_color">{{singleMovieData.tagline}}</p>
+               <div class="py-1">
+                   <span *ngFor="let genre of singleMovieData.genres" class="py-1 px-2 mx-2 lightBgColor rounded-3">{{genre.name}}</span>
+               </div>
+               <h6 class="py-3 m-0 fw-light">Vote : {{singleMovieData.vote_average}}</h6>
+               <h6 class="py-3 m-0 fw-light">Vote count : {{singleMovieData.vote_count}}</h6>
+               <h6 class="py-3 m-0 fw-light">Popularity : {{singleMovieData.popularity}}</h6>
+               <h6 class="py-3 m-0 fw-light">release date : {{singleMovieData.release_date}}</h6>
+               <p class="pt-3 second_color">{{singleMovieData.overview}}</p>
+            </div>
+        </div>      
+    </div>
+</div>
+</div>

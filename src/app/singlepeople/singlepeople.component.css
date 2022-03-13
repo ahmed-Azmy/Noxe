@@ -1,0 +1,10 @@
+.knownInfo p{
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 12px;
+    font-weight: 500;
+}
+.knownInfo p:hover{
+    color: #24baef;
+    text-decoration-color: #24baef;
+}

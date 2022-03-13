@@ -1,0 +1,31 @@
+<div class="vh d-flex justify-content-center align-items-center">
+<div class="container py-5 mt-4" *ngIf="recieved">
+    <div class="row">
+        <div class="col-md-4">
+            <img [src]="'https://image.tmdb.org/t/p/w500'+ singlePeopleData.profile_path" class="w-100">
+        </div>
+        <div class="col-md-8">
+            <div class="info py-3">
+               <h3>{{singlePeopleData.name}}</h3>
+                <span  class="py-1 px-2 lightBgColor rounded-3">{{singlePeopleData.known_for_department}}</span>       
+               <h6 class="py-3 m-0 fw-light">Birthday : {{singlePeopleData.birthday}}</h6>
+               <h6 class="py-3 m-0 fw-light" *ngIf="singlePeopleData.deathday">Deathday : {{singlePeopleData.deathday}}</h6>
+               <h6 class="py-3 m-0 fw-light">Home : {{singlePeopleData.place_of_birth}}</h6>
+               <h6 class="py-3 m-0 fw-light">Popularity : {{singlePeopleData.popularity}}</h6>
+               <p class="pt-4 second_color">{{singlePeopleData.biography}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row gy-4 mt-5">
+        <div><h2 class="m-0">Known For</h2></div>
+        <div class="col-sm-4 col-md-2" *ngFor="let combined of combinedCredit">
+            <div class="knownInfo position-relative">
+                <img  [src]="'https://image.tmdb.org/t/p/w500'+ combined.poster_path" class="w-100">
+                <p *ngIf="combined.title" class="pt-1" [routerLink]="['/singlemovie' , combined.id]">{{combined.title}}</p>
+                <p *ngIf="combined.name" class="pt-1" [routerLink]="['/singletvshow' , combined.id]">{{combined.name}}</p>
+                <span class="vote">{{combined.vote_average}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

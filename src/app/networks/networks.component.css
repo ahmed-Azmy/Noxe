@@ -1,0 +1,16 @@
+img{
+    height: 120px !important;
+}
+@media screen and (max-width:578px) {
+    img{
+        height: 200px !important;
+    }
+}
+.info{
+    background-color: #fff;
+}
+.info p{
+    color: black;
+    text-align: center;
+    font-weight: 600;
+}

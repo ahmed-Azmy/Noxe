@@ -1,0 +1,60 @@
+<!--===============================Search===========================-->
+<div class="pt-5 mt-5">
+    <div class="container">
+        <div class="d-flex align-items-center g-0">
+            <div>
+                <div class="icon py-2 rounded-start text-center">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div>
+                <div class="inputContainer">
+                   <input type="search" [(ngModel)]="searchInput" (keyup)="searchValue()" class="w-100 py-2 form-control"> 
+                </div>
+            </div> 
+        </div>  
+    </div>
+</div>
+<!--=============================Main Content==========================-->
+<div class="container pb-5 " *ngIf="!searchInput">
+    <!--========Popular People===========-->
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="py-3 text-center">
+                <h1 class="fs-3">Popular People<br>on TMDB</h1>
+                <p class="second_color">The most popular people right now.</p>
+                <div class="bottomLine"></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3" *ngFor="let people of popularPeople">
+            <div class="position-relative">
+                <img *ngIf="people.profile_path" [src]="'https://image.tmdb.org/t/p/w500'+ people.profile_path" class="w-100 cursor" [routerLink]="['/singlepeople' , people.id]">
+                <img *ngIf="!people.profile_path" src="../../assets/img/image not found.png" class="w-100 cursor" [routerLink]="['/singlepeople' , people.id]">
+                <p class="pt-1 text-center mb-2">{{people.name}}</p>
+                <p class="title text-center">{{people.known_for_department}}</p>
+            </div>
+        </div>
+        <nav aria-label="Page navigation example" class="pt-3">
+            <ul class="pagination justify-content-center">
+              <li class="page-item"><a class="page-link cursor" (click)="getPreviousPage()">Previous</a></li>
+              <li class="page-item"><a class="page-link">{{pageNumber}}</a></li>
+              <li class="page-item"><a class="page-link">from</a></li>
+              <li class="page-item"><a class="page-link">{{totalPage}}</a></li>
+              <li class="page-item"><a class="page-link cursor" (click)="getNextPage()">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!--===================================Search Data===================================-->
+<div class="container py-5" *ngIf="searchInput">
+    <div class="row">
+    <div *ngFor="let data of searchData" class="pb-4 col-md-4 col-lg-3">
+        <div class="position-relative">
+            <img *ngIf="data.profile_path" [src]="'https://image.tmdb.org/t/p/w500'+ data.profile_path" class="w-100 cursor" [routerLink]="['/singlepeople' , data.id]">
+            <img *ngIf="!data.profile_path" src="../../assets/img/image not found.png" class="w-100 cursor" [routerLink]="['/singlepeople' , data.id]">
+            <p class="pt-1 text-center mb-2">{{data.name}}</p>
+            <p class="title text-center">{{data.known_for_department}}</p>
+        </div>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+.lodaing{
+    background-image:linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.7)
+      ) ,url(../../assets/img/Loading.jpg);
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+}
+.lodaing p{
+    font-size: 40px;
+    font-weight: 800;
+}
+@media screen and (max-width:576px) {
+    .lodaing p{
+        font-size: 25px;
+        font-weight: 800;
+    } 
+}
+.lodaing .owl-container{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+.loading-owl{
+    width: 200px;
+}

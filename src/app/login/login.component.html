@@ -1,0 +1,23 @@
+<div class="vh-100 d-flex justify-content-center align-items-center">
+<div class="container py-5">
+    <form [formGroup]="loginData" (ngSubmit)="loginValue()" class="w-75 mx-auto py-5">
+
+        <label for="emailInput" class="pt-4">Email</label>
+        <input type="email" formControlName = 'email' class="form-control" id="emailInput">
+        <div *ngIf="loginData.controls['email'].invalid && loginData.controls['email'].touched" class="text-danger d-flex pt-2">
+            <p *ngIf="loginData.controls['email'].errors?.['required']" class="pe-3 m-0">Please enter your email.</p>
+            <p *ngIf="loginData.controls['email'].errors?.['email']" class="pe-3 m-0">Enter valid email.</p>
+         </div>
+        <label for="passInput" class="pt-4">Password</label>
+        <input type="password" formControlName = 'password' class="form-control" id="passInput">
+        <div *ngIf="loginData.controls['password'].invalid && loginData.controls['password'].touched" class="text-danger d-flex pt-2">
+            <p *ngIf="loginData.controls['password'].errors?.['required']" class="pe-3 m-0">Please enter your password.</p>
+        </div>
+
+        <span class="d-block pt-2">{{message}}</span>
+
+        <button [disabled] = 'loginData.invalid && loginData.touched' class="btn btn-info my-3">Login</button>
+
+    </form>
+</div>
+</div>

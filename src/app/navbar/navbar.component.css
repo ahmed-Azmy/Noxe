@@ -1,0 +1,52 @@
+.bg-navbar{
+    background-color: #131722;
+}
+h1{
+    font-family: sans-serif;
+    font-weight: 800;
+}
+ul li , i , span{
+    cursor: pointer;
+}
+ul li:hover{
+    color: #24baef;
+    transition: all .5s ease-in-out;
+}
+span:hover{
+    color: #24baef;
+    transition: all .5s ease-in-out;
+}
+.active{
+    color: #24baef;
+}
+@media screen and (max-width:992px) {
+    ul ul{
+        position: absolute;
+        top: 100%;
+        background-color: #fff;
+        width: 100%;
+        display: none;
+        text-align: center;
+        z-index: 99;
+        padding: 10px 0;
+    }
+    ul ul li{
+        padding: 10px 0 !important;
+    }
+    
+}
+.menu{
+    display: none;
+}
+.menu span{
+    display: block;
+    background-color: white;
+    width: 35px;
+    height: 2px;
+    margin: 5px 0;
+}
+@media screen and (max-width:992px) {
+    .menu{
+        display: block;
+    }
+}

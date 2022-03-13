@@ -1,0 +1,26 @@
+<nav class="py-1 shadow bg-navbar fixed-top">
+    <div class="d-flex position-relative">
+        <ul class="d-flex align-items-center p-0 m-0">
+            <h1 class="px-4">Noxe</h1>
+            <ul class="list-unstyled d-lg-flex second_color drop-item">
+                <li class="px-1" routerLinkActive="active" *ngIf="isLogin" routerLink="home">Home</li>
+                <li class="px-1" routerLinkActive="active" *ngIf="isLogin" routerLink="movies">Movies</li>
+                <li class="px-1" routerLinkActive="active" *ngIf="isLogin" routerLink="tvshow">Tv Show</li>
+                <li class="px-1" routerLinkActive="active" *ngIf="isLogin" routerLink="people">People</li>
+                <li class="px-1" routerLinkActive="active" *ngIf="isLogin" routerLink="networks">Networks</li>
+                <li class="px-2" routerLinkActive="active" *ngIf="!isLogin" routerLink="register">register</li>
+                <li class="px-2" routerLinkActive="active" *ngIf="!isLogin" routerLink="login">login</li>
+            </ul>
+        </ul>
+        <div class="d-flex ms-auto align-items-center">
+            <span class="menu pe-3" (click)="dorpdown()">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+            <p class="m-0 ps-4" *ngIf="isLogin">{{userName}}</p>
+            <span class="px-4 second_color" *ngIf="isLogin" (click)="logOut()">Logout</span>
+        </div>
+    </div>    
+</nav>

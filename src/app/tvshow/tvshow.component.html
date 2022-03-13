@@ -1,0 +1,98 @@
+<!--================================Search=================================-->
+<div class="pt-5 mt-5">
+    <div class="container">
+        <div class="d-flex align-items-center g-0">
+            <div>
+                <div class="icon py-2 rounded-start text-center">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div>
+                <div class="inputContainer">
+                   <input type="search" [(ngModel)]="searchInput" (keyup)="searchValue()" class="w-100 py-2 form-control"> 
+                </div>
+            </div> 
+        </div>  
+    </div>
+</div>
+<!--================================Main Content=================================-->
+<div class="container py-5" *ngIf="!searchInput">
+<!--======Tv show on air right now=======-->
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="py-3">
+                <div class="topLine"></div>
+                <h1 class="fs-3">On Air<br>Tv Show<br>to Watch Now</h1>
+                <p class="second_color">Most watched Tv Show On Air</p>
+                <div class="bottomLine"></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-2" *ngFor="let Tv of onAirData">
+            <div class="position-relative">
+                <img *ngIf="Tv.poster_path" [src]="'https://image.tmdb.org/t/p/w500'+ Tv.poster_path" class="w-100 cursor" [routerLink]="['/singletvshow' , Tv.id]">
+                <img *ngIf="!Tv.poster_path" src="../../assets/img/image not found.png" class="w-100 cursor" [routerLink]="['/singletvshow' , Tv.id]">
+                <p class="title pt-1">{{Tv.name}}</p>
+                <span class="vote">{{Tv.vote_average}}</span>
+            </div>
+        </div>
+    </div>
+    <!--=====Pagination=====-->
+    <nav aria-label="Page navigation example" class="pt-3">
+        <ul class="pagination justify-content-center">
+          <li class="page-item"><a class="page-link cursor" (click)="tvOnAirPreviousPage()">Previous</a></li>
+          <li class="page-item"><a class="page-link">{{tvOnAirCurrentPage}}</a></li>
+          <li class="page-item"><a class="page-link">from</a></li>
+          <li class="page-item"><a class="page-link">{{tvOnAirTotalPage}}</a></li>
+          <li class="page-item"><a class="page-link cursor" (click)="tvOnAirNextPage()">Next</a></li>
+        </ul>
+    </nav>
+    <!--===========Popular tv show=============-->
+    <div class="row justify-content-center pt-5">
+        <div class="col-md-4">
+            <div class="py-3">
+                <div class="topLine"></div>
+                <h1 class="fs-3">Popular<br>Tv Show<br>to Watch Now</h1>
+                <p class="second_color">Most watched Popular Tv Show by days</p>
+                <div class="bottomLine"></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-2" *ngFor="let Tv of tvPopular">
+            <div class="position-relative">
+                <img *ngIf="Tv.poster_path" [src]="'https://image.tmdb.org/t/p/w500'+ Tv.poster_path" class="w-100 cursor" [routerLink]="['/singletvshow' , Tv.id]">
+                <img *ngIf="!Tv.poster_path" src="../../assets/img/image not found.png" class="w-100 cursor" [routerLink]="['/singletvshow' , Tv.id]">
+                <p class="title pt-1">{{Tv.name}}</p>
+                <span class="vote">{{Tv.vote_average}}</span>
+            </div>
+        </div>
+    </div>
+    <!--=====Pagination=====-->
+    <nav aria-label="Page navigation example" class="pt-3">
+        <ul class="pagination justify-content-center">
+          <li class="page-item"><a class="page-link cursor" (click)="tvPopularPreviousPage()">Previous</a></li>
+          <li class="page-item"><a class="page-link">{{tvPopularCurrentPage}}</a></li>
+          <li class="page-item"><a class="page-link">from</a></li>
+          <li class="page-item"><a class="page-link">{{tvPopularTotalPage}}</a></li>
+          <li class="page-item"><a class="page-link cursor" (click)="tvPopularNextPage()">Next</a></li>
+        </ul>
+    </nav>
+</div>
+<!--======================================Search Data======================================-->
+<div class="container" *ngIf="searchInput">
+    <div *ngFor="let data of searchData" class="py-4">
+        <div class="row align-items-center cursor" [routerLink]="['/singletvshow' , data.id]">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <div class="img">
+                    <img *ngIf="data.poster_path" [src]="'https://image.tmdb.org/t/p/w500'+ data.poster_path" class="w-100">
+                    <img *ngIf="!data.poster_path" src="../../assets/img/image not found.png" class="w-100">
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="info">
+                    <h2 class="py-2">{{data.name}}</h2>
+                    <p class="pb-2">Release Date : {{data.first_air_date}}</p>
+                </div>
+            </div>
+        </div>      
+    </div>
+</div>
